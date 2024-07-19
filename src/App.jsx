@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import './App.css';
+import Form from './Form.jsx';
 
 function App() {
-  const [url, setUrl] = useState('');
-  const [shortUrl, setShortUrl] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await axios.post('http://localhost:5000/shorten', { url });
-    setShortUrl(response.data.shortUrl);
-  };
-
   return (
-   
     <div className="App">
-      <h1><span className='heading'>URL</span> Shortener</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="url"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="Enter URL"
-          required
-        />
-        <button type="submit">Shorten</button>
-      </form>
-      {shortUrl && (
-        <div>
-          <p>Short URL: <a href={shortUrl}>{shortUrl}</a></p>
-        </div>
-      )}
+      <header className="App-header">
+        <h1>React Form</h1>
+        <Form />
+      </header>
     </div>
   );
 }
